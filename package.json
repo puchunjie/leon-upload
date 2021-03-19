@@ -1,0 +1,83 @@
+{
+    "name": "leonupload",
+    "displayName": "leon-upload",
+    "description": "狮子座图片上传插件",
+    "version": "1.0.2",
+    "publisher": "jeremypcj",
+    "engines": {
+        "vscode": "^1.54.0"
+    },
+    "icon": "images/leon.png",
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:leonupload.choosedImage"
+    ],
+    "main": "./extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "leonupload.choosedImage",
+                "title": "leon选择图片"
+            }
+        ],
+        "menus": {
+            "editor/context": [
+                {
+                    "when": "editorFocus",
+                    "command": "leonupload.choosedImage",
+                    "group": "navigation"
+                }
+            ]
+        },
+        "configuration": [
+            {
+                "title": "狮子座上传工具配置",
+                "key": "upload_leon_config",
+                "properties": {
+                    "leon_upload_image.domain": {
+                        "type": "string",
+                        "default": "",
+                        "description": "设置上传域名"
+                    },
+                    "leon_upload_image.accessKey": {
+                        "type": "string",
+                        "default": "",
+                        "description": "设置狮子座上传accessKey"
+                    },
+                    "leon_upload_image.userToken": {
+                        "type": "string",
+                        "default": "",
+                        "description": "设置狮子座上传userToken"
+                    },
+                    "leon_upload_image.bucket": {
+                        "type": "string",
+                        "default": "",
+                        "description": "设置狮子座bucket（train4in1...）"
+                    },
+                    "leon_upload_image.folder": {
+                        "type": "string",
+                        "default": "",
+                        "description": "设置狮子座上传空间的文件夹地址"
+                    }
+                }
+            }
+        ]
+    },
+    "scripts": {
+        "lint": "eslint .",
+        "pretest": "npm run lint"
+    },
+    "devDependencies": {
+        "@types/vscode": "^1.54.0",
+        "@types/glob": "^7.1.3",
+        "@types/mocha": "^8.0.4",
+        "@types/node": "^12.11.7",
+        "eslint": "^7.19.0",
+        "glob": "^7.1.6",
+        "mocha": "^8.2.1",
+        "typescript": "^4.1.3",
+        "vscode-test": "^1.5.0"
+    }
+}
